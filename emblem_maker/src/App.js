@@ -70,9 +70,6 @@ function App() {
                     <p>Placeholder for canvas</p> 
 
                 </div>
-                
-                
-                
                 <div className='position'>
 
                     <div className='border rounded m-3 p-5 shadow bg-warning'>
@@ -84,9 +81,6 @@ function App() {
                     <div className='width'>
 
                     </div>
-
-
-
 
                 </div>
 
