@@ -19,7 +19,10 @@ const Canvas = ({objects, onClick,onRelease, onMove, onRender, needRendering, pr
 
             if (!needRendering) return; //if no need to render, return.
             onRender();
+
             context.clearRect(0, 0, canvas.width, canvas.height);
+            context.lineWidth = 3;
+            context.strokeRect(0, 0, canvas.width, canvas.height);
             for (let item of objects) {
                 item.draw(context);
             }
@@ -32,9 +35,9 @@ const Canvas = ({objects, onClick,onRelease, onMove, onRender, needRendering, pr
 
     return (
         <canvas ref={canvasRef}
-        onClick={onClick}
-        onMouseMove={onMove}
-        onMouseUp={onRelease}
+        onClick={(event)=>{onClick(event, canvasRef.current.getContext('2d'))}}
+        onMouseMove={(event)=>{onMove(event, canvasRef.current.getContext('2d'))}}
+        onMouseUp={(event)=>{onRelease(event, canvasRef.current.getContext('2d'))}}
         onDrag={(event)=>{print(event.button)}}
         {...props}/>
     );

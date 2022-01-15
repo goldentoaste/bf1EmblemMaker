@@ -8,7 +8,7 @@ class CanvasObj{
     constructor(x, y, width, height, path, assetName, flipX, flipY, angle, color, opacity){
         this.position = new Vector2(x, y); //pos is upper left corner.
         this.size = new Vector2(width, height);
-        this.path = new Path2D(this.path);
+        this.path = new Path2D(path);
         this.assetName = assetName;
         this.flipX = flipX;
         this.flipY = flipY;
