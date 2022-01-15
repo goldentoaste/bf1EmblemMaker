@@ -1,4 +1,6 @@
-
+const print = (...item) => {
+    console.log(...item)
+}
 class CanvasObj{
     //max x, y, width, height are all 325 px
     //path is svg's path data, asset is the asset name to be passed to editor.
@@ -22,13 +24,11 @@ class CanvasObj{
 
     draw(context){
         //render the svg file on canvas.
-
-        path = new Path2D(this.path); //this.path is svg path string, making the actual path obj here
+        let path = new Path2D(this.path); //this.path is svg path string, making the actual path obj here
         context.fillStyle = this.color;
-        context.translate(this.x, this.y);
-
+        context.setTransform(1, 0, 0, 1, this.x, this.y );
         context.fill(path);
-
+        
     }
 
     drawBoundBox(context){
@@ -155,20 +155,5 @@ class Vector2 {
 }
 
 
-// class AABB{
-//     constructor(x1, y1, x2, y2){
 
-//     }
-
-//     get width(){
-//         return x2 - x1;
-//     }
-
-//     get height(){
-//         return y2 - y1;
-//     }
-// }
-
-
-
-export default {CanvasObj};
+export default CanvasObj;
