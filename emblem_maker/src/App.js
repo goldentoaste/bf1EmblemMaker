@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 import Canvas from './canvas';
 import CanvasObj from './canvasObj';
+
+import svgs from './svgsVals'
+
+
 const print = (...item) => {
     console.log(...item)
 }
 
+const getAllSvgs = () => {
+    // let xhttp;
+
+    // if(window.XMLHttpRequest){
+    //     xhttp = new XMLHttpRequest();
+    // }
+    // else{
+    //     print("oh no!");
+    // }
+
+    // xhttp.open("GET", "./svgs/Circle.svg");
+    // xhttp.send();
+    // xhttp.onreadystatechange = (ev) =>{
+    //     print(ev);
+    //     print(xhttp.responseXML);
+    // }
+    print(svgs);
+
+}   
+
 
 function App() {
+    useEffect(getAllSvgs, [])
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
     // let stuff = [
     //     // new CanvasObj(50, 50, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "", false, false, 0, "#aadaff", 1),
@@ -36,6 +61,7 @@ function App() {
 // }
         
         return (
+
         <body>
             <div className='main'>
                 
@@ -83,6 +109,7 @@ function App() {
 
             
         </body>
+
         )
     }
 export default App;
