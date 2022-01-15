@@ -1,12 +1,9 @@
 
 class CanvasObj{
-
-
     //max x, y, width, height are all 325 px
     //path is svg's path data, asset is the asset name to be passed to editor.
     //angle is in radiants
     constructor(x, y, width, height, path, assetName, flipX, flipY, angle, color, opacity){
-
         this.position = new Vector2(x, y); //pos is upper left corner.
         this.size = new Vector2(width, height);
         this.path = path;
@@ -23,11 +20,38 @@ class CanvasObj{
     get width(){return this.size.x;}
     get height(){return this.size.y;}
 
+    draw(context){
+        //render the svg file on canvas.
 
-    drawBoundBox(){
+        path = new Path2D(this.path); //this.path is svg path string, making the actual path obj here
+        context.fillStyle = this.color;
+        context.translate(this.x, this.y);
+
+        context.fill(path);
+
+    }
+
+    drawBoundBox(context){
         //draw a rotated bounding box for this object.
         let center = this.position.add(this.size.mul(0.5)); //move upper left corner by half of size to get to center.
-        let upperleft = this.position.rotateAround()
+        let upperleft = this.position.rotateAround(this.angle, center);
+        let upperRight = this.position.add(new Vector2(this.width, 0)).rotateAround(this.angle, center);
+        let botLeft = this.position.add(new Vector2(0, this.height)).rotateAround(this.angle, center);
+        let botRight = this.position.add(this.size).rotateAround(this.angle, center);
+
+        context.setStrokeStyle("#aadaff");
+        context.lineCap = "round";
+        context.lineJoin = "round";
+
+        context.moveTo(upperleft.x, upperleft.y);
+        context.beginPath();
+        context.lineTo(upperRight.x, upperRight.y);
+        context.lineTo(botRight.x, botRight.y);
+        context.lineTo(botLeft.x, botLeft.y);
+        context.lineTo(upperleft.x, upperleft.y);
+
+        context.stroke();
+        //done!
     }
 
     toJsonObj(){
