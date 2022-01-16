@@ -8,7 +8,7 @@ class CanvasObj{
     constructor(x, y, width, height, path, assetName, flipX, flipY, angle, color, opacity){
         this.position = new Vector2(x, y); //pos is upper left corner.
         this.size = new Vector2(width, height);
-        this.path = path;
+        this.path = new Path2D(path);
         this.assetName = assetName;
         this.flipX = flipX;
         this.flipY = flipY;
@@ -24,10 +24,11 @@ class CanvasObj{
 
     draw(context){
         //render the svg file on canvas.
-        let path = new Path2D(this.path); //this.path is svg path string, making the actual path obj here
+
         context.fillStyle = this.color;
         context.setTransform(1, 0, 0, 1, this.x, this.y );
-        context.fill(path);
+        context.fill(this.path);
+        context.setTransform(1, 0, 0, 1, 0, 0 ); //reset the transform to not cause unwanted effects
         
     }
 
