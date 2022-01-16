@@ -12,7 +12,7 @@ import Canvas from './canvas';
 import Form from 'react-bootstrap/Form'
 import Image from 'react-bootstrap/Image'
 
-import {svgs, SvgContainer} from './svgsVals'
+
 const print = (...item) => {
     console.log(...item)
 }
@@ -60,187 +60,160 @@ function App() {
         }
     }
 
-    let iconButtons = []
-
-    const maxIconSize = 100;
-
-    for (let key of Object.keys(svgs )){
-        let item = svgs[key];
-        let max =maxIconSize/ Math.max(item.width, item.height);
-        iconButtons.push(
-            <Button 
-            onClick={(event)=>{
-                objRef.current.push(new CanvasObj(100, 100, item.width, item.height,
-                    item.path, key, false, false, 0, '#34dd55', 1
-                    ));
-            }}>
-                <img src={item.src}
-                width={item.width * max}
-                height={item.height * max}
-                />
-            </Button>
-        );
-    }
-
     return (
-        
+
         <html>
-               
 
 
 
 
-                 
-                <div class="container">
-                      
-                    <div class="Canvas">
-                        {/* <p><strong>Canvas</strong></p> */}
-                        <div class='CV'>
-                            <Canvas objects={objRef}
-                                onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
-                                onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
-                                onMove={(evt, ctx) => { controller.onMove(evt, ctx) }}
-                                onRender={() => { updateStats(); }}
-                                needRendering={true}
-                                currentObj={currentObj}
-                                props={{
-                                    width: 800,
-                                    height: 805
-                                }}
-                            />
-                        </div>
+
+
+            <div class="container">
+
+                <div class="Canvas">
+                    {/* <p><strong>Canvas</strong></p> */}
+                    <div class='CV'>
+                        <Canvas objects={objRef}
+                            onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
+                            onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
+                            onMove={(evt, ctx) => { controller.onMove(evt, ctx) }}
+                            onRender={() => { updateStats(); }}
+                            needRendering={true}
+                            currentObj={currentObj}
+                            props={{
+                                width: 800,
+                                height: 805
+                            }}
+                        />
                     </div>
-                    <div class="InfoGroup">
-                        <div class="posGroup">
-                             <label ><font> <strong>X: </strong></font></label>
-                            <input type={"number"} class="form-control" id="XVal"
-                                value={X}
-                                onChange={(e) => {
-                                    if (currentObj.current) {
-                                        currentObj.current.x = parseFloat(e.target.value);
-                                        setX(parseFloat(e.target.value));
-                                    }
-                                }}
-                            />
-
-                                <label ><font> <strong>Y: </strong></font></label>
-                            <input type={"number"} class="form-control" id="YVal" value={Y}
-                                onChange={(e) => {
-                                    if (currentObj.current) {
-                                        currentObj.current.y = parseFloat(e.target.value);
-                                        setY(parseFloat(e.target.value));
-                                    }
+                </div>
+                <div class="InfoGroup">
+                    <div class="posGroup">
+                        <label ><font> <strong>X: </strong></font></label>
+                        <input type={"number"} class="form-control" id="XVal"
+                            value={X}
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.x = parseFloat(e.target.value);
+                                    setX(parseFloat(e.target.value));
                                 }
-                                } />
-                        </div>
+                            }}
+                        />
 
-                        <div class="sizeGroup">
-                        <label ><font> <strong>W: </strong></font></label>                          
-                          <input type={"number"} class="form-control" id="WVal" value={W}
-
-                                onChange={(e) => {
-                                    if (currentObj.current) {
-                                        currentObj.current.width = parseFloat(e.target.value);
-                                        setW(parseFloat(e.target.value));
-                                    }
+                        <label ><font> <strong>Y: </strong></font></label>
+                        <input type={"number"} class="form-control" id="YVal" value={Y}
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.y = parseFloat(e.target.value);
+                                    setY(parseFloat(e.target.value));
                                 }
-                                } />
+                            }
+                            } />
+                    </div>
 
-                                <label ><font> <strong>H: </strong></font></label>
-                            <input type={"number"} class="form-control" id="HVal" value={H}
-                                onChange={(e) => {
-                                    if (currentObj.current) {
-                                        currentObj.current.height = parseFloat(e.target.value);
-                                        setH(parseFloat(e.target.value));
-                                    }
+                    <div class="sizeGroup">
+                        <label ><font> <strong>W: </strong></font></label>
+                        <input type={"number"} class="form-control" id="WVal" value={W}
+
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.width = parseFloat(e.target.value);
+                                    setW(parseFloat(e.target.value));
                                 }
-                                } />
-                        </div>
+                            }
+                            } />
 
-                        <div className='angle'>
+                        <label ><font> <strong>H: </strong></font></label>
+                        <input type={"number"} class="form-control" id="HVal" value={H}
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.height = parseFloat(e.target.value);
+                                    setH(parseFloat(e.target.value));
+                                }
+                            }
+                            } />
+                    </div>
+
+                    <div className='angle'>
                         <label ><font> <strong>Angle: </strong></font></label>
-                            <input type={"number"} class="form-control" id="AngleVal" value={angle}
-                                onChange={(e) => {
-                                    if (currentObj.current) {
-                                        currentObj.current.angle = parseFloat(Vector2.d2r(e.target.value));
-                                        setAngle(parseFloat(e.target.value));
-                                    }
+                        <input type={"number"} class="form-control" id="AngleVal" value={angle}
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.angle = parseFloat(Vector2.d2r(e.target.value));
+                                    setAngle(parseFloat(e.target.value));
                                 }
-                                } />
-                        </div>
+                            }
+                            } />
+                    </div>
 
-                        <div className='opacitydiv'>
-                            <label className='text3' > <strong>
-                                    Opacity: 
-                                </strong></label>
-                            <input type={"number"} class="form-control" id="OpacityVal" value={opacity}
+                    <div className='opacitydiv'>
+                        <label className='text3' > <strong>
+                            Opacity:
+                        </strong></label>
+                        <input type={"number"} class="form-control" id="OpacityVal" value={opacity}
 
-                                onChange={(e) => {
-                                    if (currentObj.current) {
-                                        currentObj.current.opacity = Math.min(1, Math.max(0, parseFloat(e.target.value)));
-                                        setOpacity(parseFloat(e.target.value))
-                                    }
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.opacity = Math.min(1, Math.max(0, parseFloat(e.target.value)));
+                                    setOpacity(parseFloat(e.target.value))
                                 }
-                                } />
-                        </div>
+                            }
+                            } />
+                    </div>
 
-                        <div className='color'>
+                    <div className='color'>
                         <label ><font> <strong>Color: </strong></font></label>
-                            <input type={"color"} class="form-control" id="ColorVal" value={color}
-                                onChange={(e) => {
-                                    if (currentObj.current) {
-                                        currentObj.current.color = e.target.value;
-                                        setColor(e.target.value)
-                                    }
+                        <input type={"color"} class="form-control" id="ColorVal" value={color}
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.color = e.target.value;
+                                    setColor(e.target.value)
                                 }
-                                }
-                            />
-                        </div>
-                        <Form >
-                            <div className='text'>
+                            }
+                            }
+                        />
+                    </div>
+                    <Form >
+                        <div className='text'>
                             <label><strong>Flip X: </strong></label>
-                            </div>
-                                <div className='checkbox'>
+                        </div>
+                        <div className='checkbox'>
                             {['checkbox'].map((type) => (
                                 <div className="mb-3">
-                                    
-                                   <Form.Check onChange={(e)=>{ print(e.target.checked)
-                                       }}/>
+
+                                    <Form.Check onChange={(e) => {
+                                        print(e.target.checked)
+                                    }} />
                                 </div>
                             ))}
-                            </div>
-                                <div className='text2'>
-                                <label ><font> <strong>Flip Y: </strong></font></label> 
+                        </div>
+                        <div className='text2'>
+                            <label ><font> <strong>Flip Y: </strong></font></label>
 
-                                </div>
-                             
-                                <div className='checkbox2'>
+                        </div>
+
+                        <div className='checkbox2'>
                             {['checkbox'].map((type) => (
                                 <div className="mb-3">
-                                  
-                                   <Form.Check/>
+
+                                    <Form.Check />
                                 </div>
                             ))}
-                            </div>
-                        </Form>
-
-
-
-
-
-                        
-                        <form>
-                            <Button id='btn'>Generate</Button>
-                            <div class="form-group">
-                                 <textarea class="form-control" id="FormControlTextarea1" rows="3"></textarea>
-                            </div>
-                        </form>
+                        </div>
+                    </Form>
 
 
 
 
 
 
+                    <form>
+                        <Button id='btn'>Generate</Button>
+                        <div class="form-group">
+                            <textarea class="form-control" id="FormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </form>
 
 
 
@@ -251,17 +224,22 @@ function App() {
 
 
 
-                    </div>
 
 
-                    </div> 
-                    <div class="Shapes">
-                        <ButtonGroup className="sm">
-                        {iconButtons}
-                        </ButtonGroup>
-                    </div>
-              
-                                
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="Shapes">
+
+                
+            </div>
+
+
         </html>
     );
 }
