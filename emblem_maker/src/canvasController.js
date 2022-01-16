@@ -43,11 +43,7 @@ class CanvasController {
         }
      
 
-        // if (this.currentObj.current) {
-        //     let index = this.objs.current.indexOf(this.currentObj.current);
-        //     this.objs.current.splice(index, 1);
-        //     this.objs.current.push(this.currentObj.current);
-        // }//move the selected item to the end of list 
+ 
 
     }
 

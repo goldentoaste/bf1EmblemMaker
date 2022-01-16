@@ -12,7 +12,7 @@ import Canvas from './canvas';
 import Form from 'react-bootstrap/Form'
 import Image from 'react-bootstrap/Image'
 
-
+import {svgs, SvgContainer} from './svgsVals'
 const print = (...item) => {
     console.log(...item)
 }
@@ -58,6 +58,24 @@ function App() {
             setOpacity(obj.opacity);
             setColor(obj.color);
         }
+    }
+
+    let iconButtons = []
+
+    const maxIconSize = 100;
+    
+    for (let key of Object.keys(svgs )){
+        let item = svgs[key];
+        let max =maxIconSize/ Math.max(item.width, item.height);
+        iconButtons.push(
+            <Button>
+                <img src={item.src}
+                width={item.width * max}
+                height={item.height*max}
+                color='#000000'
+                ></img>
+            </Button>
+        );
     }
 
     return (
@@ -202,12 +220,8 @@ function App() {
                         </Stack>
                     </div> 
                     <div class="Shapes">
-                        <p>Shapes</p>
-
                         <ButtonGroup className="sm">
-                            <Button>SVG Shape 1</Button>
-                            <Button >SVG Shape 2</Button>
-                            <Button >SVG Shape 3</Button>
+                        {iconButtons}
                         </ButtonGroup>
                     </div>
                 </div>
