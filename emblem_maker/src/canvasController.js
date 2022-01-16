@@ -29,17 +29,17 @@ class CanvasController {
         for (let item of this.objs.current) {//finding if there is a currently selected object
 
             let transformedPos = new Vector2(event.pageX - targetBox.left, event.pageY - targetBox.top);//convert page coord into canvas coord
-            transformedPos = transformedPos
-            .add(item.size.mul(0.5))
-             .mulP(1/item.ScaleX, 1/item.ScaleY)
-             //.rotate(-item.angle)
-            .add(item.center.mul(-1)); //undoing item transformations.
-            print(transformedPos);
+            let center = item.center;
+            context.translate(center.x, center.y);
+            context.rotate(item.angle);
+            context.scale(item.ScaleX, item.ScaleY);
+            context.translate(...item.size.mul(-0.5).toArray());
 
             if (context.isPointInPath(item.path, transformedPos.x, transformedPos.y)) {
                 this.currentObj.current = item;
                 //this.offset = (new Vector2(event.pageX - targetBox.left, event.pageY-targetBox.top)).add(item.position.mul(-1));
             }
+            context.setTransform(1, 0, 0, 1, 0, 0);
         }
      
 
