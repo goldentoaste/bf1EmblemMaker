@@ -150,7 +150,7 @@ function App() {
                     <div className='CV'>
                         <Canvas 
                         objects={objRef}
-                            onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
+                           onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
                             onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
                             onMove={(evt, ctx) => { controller.onMove(evt, ctx) }}
                             onRender={() => { updateStats(); }}
