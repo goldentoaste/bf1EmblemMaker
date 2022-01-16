@@ -6,6 +6,9 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
 import CanvasController from './canvasController';
+import { CanvasObj } from './canvasObj';
+import Canvas from './canvas';
+
 
 
 const print = (...item) => {
@@ -15,15 +18,17 @@ const print = (...item) => {
 
 
 let controller;
-let stuff = [
+let stuff = [ // implement change layers
     new CanvasObj(50, 50, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "AAAA", false, false, 0, "#aadaff", 1),
     new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
+
 ];
 
 // Mouse X and Y
 
 function App() {
     let currentObj = useRef(null);
+    let objRef = useRef(stuff);
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
     useEffect(() => {
         print("setting up in useEffect.");
@@ -52,7 +57,8 @@ function App() {
                         </div>
                     </div>
                     <div class="Position">
-                        <p>X Val: Lorem Empsum</p>
+                        <p>X Val: </p>
+                        
                         <p>Y Val: Lorem Empsum</p> <br></br>
                         <p>Height: Lorem Empsum</p>
                         <p>Width: Lorem Empsum</p> <br></br>
@@ -62,10 +68,15 @@ function App() {
                     <div class="List">
                         <p>List</p>
                         <Stack gap={3}>
-                            <div className="bg-light border">Selection 1</div>
-                            <div className="bg-light border">Selection 2</div>
-                            <div className="bg-light border">Selection 3</div>
+                            <div className="bg-light border">Shape 1</div>
+                            <div className="bg-light border">Shape 2</div>
+                            <div className="bg-light border">Shape 3</div>
                         </Stack>
+                        <div className='first'>
+                            <li>
+                              
+                            </li>
+                        </div>
                     </div>
                     <div class="Shapes">
                         <p>Shapes</p>
