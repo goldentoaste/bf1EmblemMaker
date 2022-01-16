@@ -2,12 +2,12 @@
 
 
 .container {
-    width:100%;
-    height:100%;
-    background-color: rgb(116, 207, 219);
+    width:inherit;
+    height:inherit;
+    background-color:rgb(116, 207, 219);
     display: grid; 
     grid-template-columns: 7fr 2fr 2fr; 
-    grid-template-rows: 7fr 2fr 1fr; 
+    grid-template-rows: 7fr 2fr 1fr;  
     gap: 0px 0px; 
     grid-template-areas: 
       "Canvas Canvas Position"
@@ -17,7 +17,7 @@
   }
   .Canvas { 
       grid-area: Canvas; 
-      border: 3px solid blue;
+      border: 3px solid rgb(0, 0, 0);
       text-align: center;
       width: inherit; 
       height: inherit;
@@ -42,19 +42,23 @@
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    
   }
 
   .InfoGroup > div {
     display: flex;
     margin: 10pt;
     gap: 5pt;
+    
   }
   .InfoGroup > div > input{
     max-height: 20pt;
+    
   }
 
   .List { 
       grid-area: List;
+      
   }
 
   .Shapes { 
@@ -63,6 +67,7 @@
       justify-items: center;
       width: 100%;
       text-align: center;
+     
 
     }
 
@@ -91,4 +96,23 @@ p{
 
 .list{
   background-color:pink;
+}
+
+
+.text{
+  
+  float: left; margin-top: -1px; margin-bottom:-1px;
+}
+
+.checkbox{
+  margin-left: 45px;
+}
+
+.text2{
+  
+  float: left; margin-top: -1px; margin-bottom:-1px;
+}
+
+.checkbox2{
+  margin-left: 45px;
 }
