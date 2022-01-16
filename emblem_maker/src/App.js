@@ -1,25 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from 'react-bootstrap/Form';
-import Badge from 'react-bootstrap/Badge';
+
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
-import ReactDOM from "react-dom";
+
 import CanvasDraw from "react-canvas-draw";
 
 
-
-
-
-
-
-
-
-
-
-
+// Mouse X and Y
 
 function App() {
 
@@ -32,7 +22,7 @@ function App() {
                     <p><strong>Canvas</strong></p>
                         <div className='CV'>
                             
-                            <CanvasDraw>
+                        <CanvasDraw>
                         gridSizeX: 25
                         gridSizeY: 25
                         </CanvasDraw>
