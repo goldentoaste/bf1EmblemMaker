@@ -63,17 +63,21 @@ function App() {
     let iconButtons = []
 
     const maxIconSize = 100;
-    
+
     for (let key of Object.keys(svgs )){
         let item = svgs[key];
         let max =maxIconSize/ Math.max(item.width, item.height);
         iconButtons.push(
-            <Button>
+            <Button 
+            onClick={(event)=>{
+                objRef.current.push(new CanvasObj(100, 100, item.width, item.height,
+                    item.path, key, false, false, 0, '#34dd55', 1
+                    ));
+            }}>
                 <img src={item.src}
                 width={item.width * max}
-                height={item.height*max}
-                color='#000000'
-                ></img>
+                height={item.height * max}
+                />
             </Button>
         );
     }

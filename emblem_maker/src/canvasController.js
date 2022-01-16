@@ -18,8 +18,8 @@ class CanvasController {
 
 
     onClick(event = new MouseEvent(), context = new CanvasRenderingContext2D()) {
-        
-
+        print("page:", event.pageX, event.pageY, "client:", event.clientX, event.clientY);
+        print( event.target.getBoundingClientRect(), event.target)
         let targetBox = event.target.getBoundingClientRect();
         if (event.button === 0) { //0 is code for mouse left
             this.left = true;
@@ -28,7 +28,7 @@ class CanvasController {
         this.currentObj.current = null; //set the initial val to null so that if no obj is under mouse.
         for (let item of this.objs.current) {//finding if there is a currently selected object
 
-            let transformedPos = new Vector2(event.pageX - targetBox.left, event.pageY - targetBox.top);//convert page coord into canvas coord
+            let transformedPos = new Vector2(event.pageX - targetBox.left - window.scrollX, event.pageY - targetBox.top - window.scrollY);//convert page coord into canvas coord
             let center = item.center;
             context.translate(center.x, center.y);
             context.rotate(item.angle);
