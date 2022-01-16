@@ -22,7 +22,7 @@ const print = (...item) => {
 let controller;
 let stuff = [
     new CanvasObj(50, 50, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "AAAA", false, false, 0, "#aadaff", 1),
-    new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
+    // new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
 ];
 
 // Mouse X and Y
@@ -181,10 +181,11 @@ function App() {
                             </div>
                                 <div className='checkbox'>
                             {['checkbox'].map((type) => (
-                                
-                                    
-                                   <Form.Check/>
-                                
+                                <div className="mb-3">
+                                    <label>FlipX</label>
+                                   <Form.Check onChange={(e)=>{ print(e.target.checked)
+                                       }}/>
+                                </div>
                             ))}
                             </div>
                                 <div className='text2'>
