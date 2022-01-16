@@ -6,6 +6,21 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
+import ReactDOM from "react-dom";
+import CanvasDraw from "react-canvas-draw";
+
+
+
+
+
+
+
+
+
+
+
+
+
 function App() {
 
     return (
@@ -15,7 +30,10 @@ function App() {
             <div class="container">
                 <div class="Canvas">
                     <p><strong>Canvas</strong></p>
-                
+                        <CanvasDraw>
+                        gridSizeX: 25
+                        gridSizeY: 25
+                        </CanvasDraw>
                 </div>
                 <div class="Position">
                     <p>X Val: Lorem Empsum</p> 
