@@ -1,16 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Stack from 'react-bootstrap/Stack';
+import ReactDOM from "react-dom";
+import CanvasDraw from "react-canvas-draw";
 
 import Canvas from './canvas';
 import { CanvasObj } from './canvasObj';
 import CanvasController from './canvasController';
 
-import svgs from './svgsVals'
 
 
-const print = (...item) => {
-    console.log(...item)
-}
 
 
 let controller;
@@ -19,78 +23,56 @@ let stuff = [
     new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
 ];
 
+
 function App() {
-    let currentObj = useRef(null);
-    let objRef = useRef(stuff);
-    //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
-    useEffect(() => {
-        print("setting up in useEffect.");
-        controller = new CanvasController(objRef, currentObj);
-    }, [])
-
+    // let currentObj = useRef(null);
+    // let objRef = useRef(stuff);
+    // //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
+    // useEffect(() => {
+    //     print("setting up in useEffect.");
+    //     controller = new CanvasController(objRef, currentObj);
+    // }, [])
     return (
-        <div className='canvasContainer'>
-            <h1>Hello</h1>
-            <Canvas objects={objRef}
-                onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
-                onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
-                onMove={(evt, ctx) => { controller.onMove(evt, ctx) }}
-                onRender={() => { }}
-                needRendering={true}
-                currentObj={currentObj}
-                props={{
-                    width: 1000,
-                    height: 1000
-                }}
-            />
-        </div>
-    )
+        <body>
+            <div class="container">
+                <div class="Canvas">
+                    <p><strong>Canvas</strong></p>
+                    <div className='CV'>
 
+                        <CanvasDraw>
+                            gridSizeX: 25
+                            gridSizeY: 25
+                        </CanvasDraw>
+                    </div>
+                </div>
+                <div class="Position">
+                    <p>X Val: Lorem Empsum</p>
+                    <p>Y Val: Lorem Empsum</p> <br></br>
+                    <p>Height: Lorem Empsum</p>
+                    <p>Width: Lorem Empsum</p> <br></br>
+                    <p>Angle: Lorem Empsum</p>
+                    <p>Opacity: Lorem Empsum</p>
+                </div>
+                <div class="List">
+                    <p>List</p>
+                    <Stack gap={3}>
+                        <div className="bg-light border">Selection 1</div>
+                        <div className="bg-light border">Selection 2</div>
+                        <div className="bg-light border">Selection 3</div>
+                    </Stack>
+                </div>
+                <div class="Shapes">
+                    <p>Shapes</p>
 
-    // return (
-
-    // <body>
-    //     <div className='main'>
-
-    //         <div className='canvas'>
-
-    //             <p>Placeholder for canvas</p> 
-
-    //         </div>
-    //         <div className='position'>
-
-    //             <div className='border rounded m-3 p-5 shadow bg-warning'>
-    //                 <p>X Position and Y Position</p>
-    //             </div>
-    //             <div className='border rounded m-3 p-5 shadow bg-warning'>
-    //                 <p>Height and Width</p>
-    //             </div>
-    //             <div className='width'>
-
-    //             </div>
-
-    //         </div>
-
-
-    //         <div className='shapes'>
-    //             <p>Placeholder for shapes</p>
-
-    //         </div>
-
-    //         <div className='list'>
-    //             <p>Placeholder for list</p>
-
-    //         </div>
-
-
-
-
-    //     </div>
-
-
-
-    // </body>
-
-    // )
+                    <ButtonGroup className="sm">
+                        <Button >SVG Shape 1</Button>
+                        <Button >SVG Shape 2</Button>
+                        <Button >SVG Shape 3</Button>
+                    </ButtonGroup>
+                </div>
+            </div>
+        </body>
+    );
 }
+
 export default App;

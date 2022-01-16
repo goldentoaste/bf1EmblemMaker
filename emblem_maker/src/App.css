@@ -1,69 +1,75 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans&display=swap");
 
 
-.canvas{
-    position:absolute;
-    border: 3px solid blue;
-    width: 75%;
-    height: 80%;
+.container {
+    width:100%;
+    height:100%;
+    background-color: rgb(116, 207, 219);
+    display: grid; 
+    grid-template-columns: 7fr 2fr 2fr; 
+    grid-template-rows: 7fr 2fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "Canvas Canvas Position"
+      "Canvas Canvas List"
+      "Shapes Shapes List"; 
+
+  }
+  .Canvas { 
+      grid-area: Canvas; 
+      border: 3px solid blue;
+      text-align: center;
+      width: inherit; 
+      height: inherit;
+      gap: 0px 0px; 
+    }
+  .Position {
+    float:right;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . ."
+      ". . ."
+      ". . ."; 
+    grid-area: Position; 
+    padding: 15px;
+    margin:0px;
+
+    
+  }
+  .List { 
+      grid-area: List;
+  }
+
+  .Shapes { 
+      grid-area: Shapes; 
+      /* border: 3px solid blue; */ 
+      justify-items: center;
+      width: 100%;
+      text-align: center;
+
+    }
+
+
+
+p{
     text-align: center;
 }
 
 
-.list{
-    
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    background-color: rgb(109, 174, 224);
-    */
-    position:absolute;
-    flex:1;
-    bottom:0;
-    right:0;
-    width: 25%;
-    height: 60%;
-    border: 3px solid green;
+.square{
+    margin:50%;
 }
 
-
-.position{
-    /* box-shadow: 0 4px 8px 0 rgba(2, 37, 102, 0.2);
-    border-radius: 5px;
-    background-color: rgb(4, 46, 78);
-    */
-
-    position:absolute;
-    flex:1;
-    top:0;
-    right:0;
-    height:40%;
-    width:25%;
-    border: 3px solid green;
-    padding: 10px;
-    text-align: center;
-    
-    
+.sm{
+    display: inline-block;
+    margin: 0 auto;
+    padding: 3px;
 
 }
-
-.shapes{
-    
-    /* background-color:rgb(17, 139, 196); */
-    
-    position: absolute;
-    flex: 1;
-    bottom: 0;
-    border: 3px solid green;
-    text-align:center;
-    height:20%;
-    width:75%;
-    
-    
+.CV{
+  display:inline-block;
+  margin-top: 50px;
 }
-
-.x{
-    background-color: pink;
-    border: 10px solid rgb(0, 0, 0);
-}
-
-
