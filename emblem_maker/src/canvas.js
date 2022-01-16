@@ -18,8 +18,9 @@ const Canvas = ({objects, onClick,onRelease, onMove, onRender, needRendering, cu
 
         let interval = setInterval(() => {
             if (!needRendering) return; //if no need to render, return.
-            onRender();
-            context.clearRect(0, 0, canvas.width, canvas.height);
+            onRender(canvas);
+            context.fillStyle="#f5f5f5";
+            context.fillRect(0, 0, canvas.width, canvas.height);
             context.lineWidth = 3;
             context.strokeStyle = "#000000";
             context.strokeRect(0, 0, canvas.width, canvas.height);

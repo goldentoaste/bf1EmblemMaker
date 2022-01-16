@@ -99,18 +99,19 @@ class CanvasObj {
         //done!
     }
 
-    toJsonObj() {
+    toJsonObj(x, y) {
+        const official = 325;
         return {
             opacity: this.opacity,
             angle: Vector2.r2d(this.angle),
             flipX: this.flipX,
             flipY: this.flipY,
-            top: this.y,
-            height: this.height,
-            width: this.width,
+            top: (this.y / y) * official,
+            height: (this.currentSize.y) / y * official,
+            width:  (this.currentSize.x) / x * official,
             asset: this.assetName,
             selectable: false,
-            left: this.x,
+            left:  (this.x / x) * official,
             fill: this.color
         }
     }
