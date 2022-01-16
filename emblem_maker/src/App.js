@@ -7,8 +7,9 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
 import CanvasController from './canvasController';
 
-import { CanvasObj,Vector2} from './canvasObj';
+import { CanvasObj, Vector2 } from './canvasObj';
 import Canvas from './canvas';
+import Form from 'react-bootstrap/Form'
 
 const print = (...item) => {
     console.log(...item)
@@ -105,63 +106,77 @@ function App() {
                         <div class="sizeGroup">
                             <label >W: </label>
                             <input type={"number"} class="form-control" id="WVal" value={W}
-                            
-                            onChange={(e) => {
-                                if (currentObj.current) {
-                                    currentObj.current.width = parseFloat(e.target.value);
-                                    setW(parseFloat(e.target.value));
+
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.width = parseFloat(e.target.value);
+                                        setW(parseFloat(e.target.value));
+                                    }
                                 }
-                            }
-                            } />
+                                } />
 
                             <label >H: </label>
                             <input type={"number"} class="form-control" id="HVal" value={H}
-                             onChange={(e) => {
-                                if (currentObj.current) {
-                                    currentObj.current.height = parseFloat(e.target.value);
-                                    setH(parseFloat(e.target.value));
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.height = parseFloat(e.target.value);
+                                        setH(parseFloat(e.target.value));
+                                    }
                                 }
-                            }
-                            } />
+                                } />
                         </div>
 
                         <div>
                             <label >Angle: </label>
                             <input type={"number"} class="form-control" id="AngleVal" value={angle}
-                             onChange={(e) => {
-                                if (currentObj.current) {
-                                    currentObj.current.angle = parseFloat(Vector2.d2r(e.target.value));
-                                    setAngle( parseFloat(e.target.value));
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.angle = parseFloat(Vector2.d2r(e.target.value));
+                                        setAngle(parseFloat(e.target.value));
+                                    }
                                 }
-                            }
-                            }/>
+                                } />
                         </div>
 
                         <div>
                             <label >Opcaity: </label>
                             <input type={"number"} class="form-control" id="OpacityVal" value={opacity}
-                            
-                            onChange={(e) => {
-                                if (currentObj.current) {
-                                    currentObj.current.opacity = Math.min(1, Math.max(0, parseFloat(e.target.value)));
-                                    setOpacity( parseFloat(e.target.value))
+
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.opacity = Math.min(1, Math.max(0, parseFloat(e.target.value)));
+                                        setOpacity(parseFloat(e.target.value))
+                                    }
                                 }
-                            }
-                            }/>
+                                } />
                         </div>
 
                         <div>
                             <label>Color: </label>
-                            <input type={"color"} class="form-control" id="ColorVal" value={color} 
-                             onChange={(e) => {
-                                if (currentObj.current) {
-                                    currentObj.current.color = e.target.value;
-                                    setColor(e.target.value)
+                            <input type={"color"} class="form-control" id="ColorVal" value={color}
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.color = e.target.value;
+                                        setColor(e.target.value)
+                                    }
                                 }
-                            }
-                            }
+                                }
                             />
                         </div>
+                        <Form>
+                            {['checkbox'].map((type) => (
+                                <div className="mb-3">
+                                    <label>FlipX</label>
+                                   <Form.Check/>
+                                </div>
+                            ))}
+                            {['checkbox'].map((type) => (
+                                <div className="mb-3">
+                                    <label>FlipY</label>
+                                   <Form.Check/>
+                                </div>
+                            ))}
+                        </Form>
                     </div>
                     <div class="List">
                         <p>List</p>
