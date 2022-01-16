@@ -177,12 +177,12 @@ function App() {
                         </div>
                         <Form >
                             <div className='text'>
-                            <label ><font> <strong>Flip X: </strong></font></label>
+                            <label><strong>Flip X: </strong></label>
                             </div>
                                 <div className='checkbox'>
                             {['checkbox'].map((type) => (
                                 <div className="mb-3">
-                                    <label>FlipX</label>
+                                    
                                    <Form.Check onChange={(e)=>{ print(e.target.checked)
                                        }}/>
                                 </div>
