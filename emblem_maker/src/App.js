@@ -37,13 +37,6 @@ function App() {
                     <div className="Canvas">
                         {/* <p><strong>Canvas</strong></p> */}
                         <div className='CV'>
-                            
-                        <CanvasDraw>
-                        gridSizeX: 25
-                        gridSizeY: 25
-                        </CanvasDraw>
-
-
                             <Canvas objects={objRef}
                                 onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
                                 onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
