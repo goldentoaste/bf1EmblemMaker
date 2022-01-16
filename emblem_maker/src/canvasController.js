@@ -18,7 +18,6 @@ class CanvasController {
 
 
     onClick(event = new MouseEvent(), context = new CanvasRenderingContext2D()) {
-        print("in on click", event.button)
         let targetBox = event.target.getBoundingClientRect();
         if (event.button === 0) { //0 is code for mouse left
             this.left = true;
@@ -34,6 +33,7 @@ class CanvasController {
 
             }
         }
+     
 
         // if (this.currentObj.current) {
         //     let index = this.objs.current.indexOf(this.currentObj.current);
@@ -44,7 +44,7 @@ class CanvasController {
     }
 
     onRelease(event = new MouseEvent(), context = new CanvasRenderingContext2D()) {
-        print("in on repease", event.button)
+    
         if (event.button === 0) {
             this.left = false;
         }

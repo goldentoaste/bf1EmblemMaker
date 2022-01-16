@@ -23,8 +23,8 @@
       height: inherit;
       gap: 0px 0px; 
     }
-  .Position {
-    float:right;
+  /* .InfoGroup {
+    /* float:right;
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr 1fr; 
@@ -35,10 +35,24 @@
       ". . ."; 
     grid-area: Position; 
     padding: 15px;
-    margin:0px;
+    margin:0px; 
 
     
+  } */
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
+
+  .InfoGroup > div {
+    display: flex;
+    margin: 10pt;
+    gap: 5pt;
+  }
+  .InfoGroup > div > input{
+    max-height: 20pt;
+  }
+
   .List { 
       grid-area: List;
   }

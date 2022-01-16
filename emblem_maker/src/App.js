@@ -27,11 +27,35 @@ let stuff = [
 function App() {
     let currentObj = useRef(null);
     let objRef = useRef(stuff);
+
+
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
     useEffect(() => {
-        print("setting up in useEffect.");
+
         controller = new CanvasController(objRef, currentObj);
     }, [])
+
+
+    let [X, setX] = useState(0);
+    let [Y, setY] = useState(0);
+    let [W, setW] = useState(0);
+    let [H, setH] = useState(0);
+    let [angle, setAngle] = useState(0);
+    let [opacity, setOpacity] = useState(0);
+    let [color, setColor] = useState("#000000");
+
+    const updateStats = () => {
+        let obj = currentObj.current;
+        if (obj && controller.left) { //only update if there is a current obj selected.
+            setX(obj.x);
+            setY(obj.y);
+            setW(obj.width);
+            setH(obj.height);
+            setAngle(obj.angle);
+            setOpacity(obj.opacity);
+            setColor(obj.color);
+        }
+    }
 
     return (
         <body>
@@ -44,7 +68,7 @@ function App() {
                                 onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
                                 onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
                                 onMove={(evt, ctx) => { controller.onMove(evt, ctx) }}
-                                onRender={() => { }}
+                                onRender={() => { updateStats(); }}
                                 needRendering={true}
                                 currentObj={currentObj}
                                 props={{
@@ -54,13 +78,88 @@ function App() {
                             />
                         </div>
                     </div>
-                    <div class="Position">
-                        <p>X Val: Lorem Empsum</p>
-                        <p>Y Val: Lorem Empsum</p> <br></br>
-                        <p>Height: Lorem Empsum</p>
-                        <p>Width: Lorem Empsum</p> <br></br>
-                        <p>Angle: Lorem Empsum</p>
-                        <p>Opacity: Lorem Empsum</p>
+                    <div class="InfoGroup">
+                        <div class="posGroup">
+                            <label >X: </label>
+                            <input type={"number"} class="form-control" id="XVal"
+                                value={X}
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.x = parseFloat(e.target.value);
+                                        setX(parseFloat(e.target.value));
+                                    }
+                                }}
+                            />
+
+                            <label>Y: </label>
+                            <input type={"number"} class="form-control" id="YVal" value={Y}
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.y = parseFloat(e.target.value);
+                                        setY(parseFloat(e.target.value));
+                                    }
+                                }
+                                } />
+                        </div>
+
+                        <div class="sizeGroup">
+                            <label >W: </label>
+                            <input type={"number"} class="form-control" id="WVal" value={W}
+                            
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.width = parseFloat(e.target.value);
+                                }
+                            }
+                            } />
+
+                            <label >H: </label>
+                            <input type={"number"} class="form-control" id="HVal" value={H}
+                             onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.height = parseFloat(e.target.value);
+                                }
+                            }
+                            } />
+                        </div>
+
+                        <div>
+                            <label >Angle: </label>
+                            <input type={"number"} class="form-control" id="AngleVal" value={angle}
+                             onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.angle = parseFloat(e.target.value);
+                                    setAngle( parseFloat(e.target.value));
+                                }
+                            }
+                            }/>
+                        </div>
+
+                        <div>
+                            <label >Opcaity: </label>
+                            <input type={"number"} class="form-control" id="OpacityVal" value={opacity}
+                            
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.opacity = Math.min(1, Math.max(0, parseFloat(e.target.value)));
+                                    setOpacity( parseFloat(e.target.value))
+                                }
+                            }
+                            }/>
+                        </div>
+
+                        <div>
+                            <label>Color: </label>
+                            <input type={"color"} class="form-control" id="ColorVal" value={color} 
+                             onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.color = e.target.value;
+                                    setColor(e.target.value)
+                                }
+                            }
+                            }
+                            />
+                        </div>
                     </div>
                     <div class="List">
                         <p>List</p>

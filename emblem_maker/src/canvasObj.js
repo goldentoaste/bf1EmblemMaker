@@ -18,9 +18,16 @@ class CanvasObj{
     }
 
     get x(){return this.position.x;}
+    set x(v){this.position.x = v};
+
     get y(){return this.position.y;}
+    set y(v){this.position.y = v;}
+
     get width(){return this.size.x;}
+    set width(v){this.size.x = v;}
+
     get height(){return this.size.y;}
+    set height(v){this.size.y = v};
 
     draw(context){
         //render the svg file on canvas.
