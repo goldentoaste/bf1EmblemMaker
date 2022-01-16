@@ -3,6 +3,7 @@ import Dogtag from './svgs/Dogtag.svg'
 import Shield from "./svgs/Shield.svg"
 import Stroke from "./svgs/Stroke.svg"
 import StrokeBent from "./svgs/StrokeBent.svg"
+import Triangle from "./svgs/Triangle.svg"
 class SvgContainer {
     constructor(name, width, height, path, src) {
         this.name = name;
@@ -23,7 +24,8 @@ const svgs = {
 	s13,5.82,13,13S41.591,91.479,34.411,91.479z`, Dogtag),
     'Shield': new SvgContainer("Shield", 320, 320, "M160,320c0,0-80-16-128-64c0,0-32-32-32-96V0h320v160c0,0,0,64-32,96C288,256,240,304,160,320z", Shield),
     'Stroke': new SvgContainer("Stroke", 64, 320, "M0,0h64v320H0V0z", Stroke),
-    'StrokeBent': new SvgContainer('StrokeBent', 96, 320, "M64,0C64,0,0,48,0,160s64,160,64,160h32c0,0-64-48-64-160S96,0,96,0H64z", StrokeBent)
+    'StrokeBent': new SvgContainer('StrokeBent', 96, 320, "M64,0C64,0,0,48,0,160s64,160,64,160h32c0,0-64-48-64-160S96,0,96,0H64z", StrokeBent),
+    'Triangle': new SvgContainer('Triangle', 320, 320, "M160,0L0,320h320L160,0z", Triangle)
 }
 
 export { svgs, SvgContainer };
