@@ -7,6 +7,8 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
 import CanvasController from './canvasController';
 
+import { CanvasObj } from './canvasObj';
+import Canvas from './canvas';
 
 const print = (...item) => {
     console.log(...item)
@@ -24,6 +26,7 @@ let stuff = [
 
 function App() {
     let currentObj = useRef(null);
+    let objRef = useRef(stuff);
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
     useEffect(() => {
         print("setting up in useEffect.");
@@ -33,10 +36,10 @@ function App() {
     return (
         <body>
             <div>
-                <div className="container">
-                    <div className="Canvas">
+                <div class="container">
+                    <div class="Canvas">
                         {/* <p><strong>Canvas</strong></p> */}
-                        <div className='CV'>
+                        <div class='CV'>
                             <Canvas objects={objRef}
                                 onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
                                 onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
