@@ -10,6 +10,8 @@ import CanvasController from './canvasController';
 import { CanvasObj, Vector2 } from './canvasObj';
 import Canvas from './canvas';
 import Form from 'react-bootstrap/Form'
+import Image from 'react-bootstrap/Image'
+
 
 const print = (...item) => {
     console.log(...item)
@@ -163,19 +165,31 @@ function App() {
                                 }
                             />
                         </div>
-                        <Form>
+                        <Form >
+                            <div className='text'>
+                            <label>FlipX: </label>
+                            </div>
+                                <div className='checkbox'>
+                            {['checkbox'].map((type) => (
+                                
+                                    
+                                   <Form.Check/>
+                                
+                            ))}
+                            </div>
+                                <div className='text2'>
+                                     <label>FlipY: </label>  
+
+                                </div>
+                             
+                                <div className='checkbox2'>
                             {['checkbox'].map((type) => (
                                 <div className="mb-3">
-                                    <label>FlipX</label>
+                                  
                                    <Form.Check/>
                                 </div>
                             ))}
-                            {['checkbox'].map((type) => (
-                                <div className="mb-3">
-                                    <label>FlipY</label>
-                                   <Form.Check/>
-                                </div>
-                            ))}
+                            </div>
                         </Form>
                     </div>
                     <div class="List">
@@ -185,12 +199,12 @@ function App() {
                             <div className="bg-light border">Selection 2</div>
                             <div className="bg-light border">Selection 3</div>
                         </Stack>
-                    </div>
+                    </div> 
                     <div class="Shapes">
                         <p>Shapes</p>
 
                         <ButtonGroup className="sm">
-                            <Button >SVG Shape 1</Button>
+                            <Button>SVG Shape 1</Button>
                             <Button >SVG Shape 2</Button>
                             <Button >SVG Shape 3</Button>
                         </ButtonGroup>
