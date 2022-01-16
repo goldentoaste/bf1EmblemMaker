@@ -5,15 +5,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
+import CanvasController from './canvasController';
 
-import CanvasDraw from "react-canvas-draw";
 
+const print = (...item) => {
+    console.log(...item)
+}
+
+
+
+let controller;
+let stuff = [
+    new CanvasObj(50, 50, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "AAAA", false, false, 0, "#aadaff", 1),
+    new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
+];
 
 // Mouse X and Y
 
 function App() {
     let currentObj = useRef(null);
-    let objRef = useRef(stuff);
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
     useEffect(() => {
         print("setting up in useEffect.");
