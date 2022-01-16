@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Stack from 'react-bootstrap/Stack';
+
 import CanvasController from './canvasController';
 import { CanvasObj } from './canvasObj';
 import Canvas from './canvas';
@@ -29,6 +29,11 @@ let stuff = [ // implement change layers
 function App() {
     let currentObj = useRef(null);
     let objRef = useRef(stuff);
+
+
+
+
+
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
     useEffect(() => {
         print("setting up in useEffect.");
@@ -65,19 +70,30 @@ function App() {
                         <p>Angle: Lorem Empsum</p>
                         <p>Opacity: Lorem Empsum</p>
                     </div>
+
+                                    {/* List */}
+                
                     <div class="List">
-                        <p>List</p>
-                        <Stack gap={3}>
-                            <div className="bg-light border">Shape 1</div>
-                            <div className="bg-light border">Shape 2</div>
-                            <div className="bg-light border">Shape 3</div>
-                        </Stack>
-                        <div className='first'>
-                            <li>
-                              
-                            </li>
-                        </div>
+                            <div id='layer1'>
+                                <p>Layer 1</p>
+                            </div>
+
+                            <div id='layer2'>
+                                <p>Layer 2</p>
+                            </div>
+                                <p>Layer 3</p>
+
+                            <div id='layer3'>
+                                
+                            </div>
                     </div>
+
+
+
+
+
+
+
                     <div class="Shapes">
                         <p>Shapes</p>
 
@@ -93,4 +109,4 @@ function App() {
     );
 }
 
-export default App;
+export default App; 
