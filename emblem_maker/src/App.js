@@ -30,10 +30,15 @@ function App() {
             <div class="container">
                 <div class="Canvas">
                     <p><strong>Canvas</strong></p>
-                        <CanvasDraw>
+                        <div className='CV'>
+                            
+                            <CanvasDraw>
                         gridSizeX: 25
                         gridSizeY: 25
                         </CanvasDraw>
+
+
+                        </div>
                 </div>
                 <div class="Position">
                     <p>X Val: Lorem Empsum</p> 
