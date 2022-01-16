@@ -106,12 +106,12 @@ class CanvasObj {
             angle: Vector2.r2d(this.angle),
             flipX: this.flipX,
             flipY: this.flipY,
-            top: (this.y / y) * official,
+            top: ((this.y + this.size.y/2) / y) * official,
             height: (this.currentSize.y) / y * official,
             width:  (this.currentSize.x) / x * official,
             asset: this.assetName,
             selectable: false,
-            left:  (this.x / x) * official,
+            left:  ((this.x+ this.size.x/2) / x) * official,
             fill: this.color
         }
     }

@@ -35,7 +35,7 @@ const placeHolderList = ["place holder layer1", "place holder layer2", "place ho
 
 const listTemplate = ({ item, itemSelected, anySelected, dragHandleProps, commonProps }) => {
     return (
-            <div {...dragHandleProps}>
+        <div {...dragHandleProps}>
             <img src={svgs["Circle"].src} width={50} height={50}></img>
             <label>{item}</label>
         </div>
@@ -44,10 +44,10 @@ const listTemplate = ({ item, itemSelected, anySelected, dragHandleProps, common
 }
 
 
-const generate = (canvasX, canvasY, stuff)=>{
+const generate = (canvasX, canvasY, stuff) => {
     let output = [];
 
-    for (let item of stuff){
+    for (let item of stuff) {
         output.push(item.toJsonObj(canvasX, canvasY));
     }
 
@@ -86,7 +86,7 @@ function App() {
     let objRef = useRef(stuff);
     let textArea = useRef(null);
     let CanvasRef = useRef(null);
- 
+
     useEffect(() => {
         controller = new CanvasController(objRef, currentObj);
     }, [])
@@ -100,7 +100,7 @@ function App() {
     let [color, setColor] = useState("#000000");
 
     const updateStats = (canvas) => {
-     CanvasRef.current = canvas;
+        CanvasRef.current = canvas;
         let obj = currentObj.current;
         if (obj && controller.left) { //only update if there is a current obj selected.
             setX(obj.x);
@@ -148,9 +148,9 @@ function App() {
                 <div className="Canvas">
                     {/* <p><strong>Canvas</strong></p> */}
                     <div className='CV'>
-                        <Canvas 
-                        objects={objRef}
-                           onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
+                        <Canvas
+                            objects={objRef}
+                            onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
                             onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
                             onMove={(evt, ctx) => { controller.onMove(evt, ctx) }}
                             onRender={() => { updateStats(); }}
@@ -278,12 +278,12 @@ function App() {
 
                     <form>
                         <Button id='btn'
-                        onClick={(event)=>{
-                            textArea.current.value = generate(800, 800, objRef.current);
-                            print(textArea.current.value)
-                        }}>Generate</Button>
+                            onClick={(event) => {
+                                textArea.current.value = generate(800, 800, objRef.current);
+                                print(textArea.current.value)
+                            }}>Generate</Button>
                         <div className="form-group">
-                            <textarea  ref={textArea} className="form-control" id="FormControlTextarea1" rows="3"></textarea>
+                            <textarea ref={textArea} className="form-control" id="FormControlTextarea1" rows="3"></textarea>
                         </div>
                     </form>
 
