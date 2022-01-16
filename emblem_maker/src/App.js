@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from 'react-bootstrap/Form';
-import Badge from 'react-bootstrap/Badge';
+
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
@@ -20,6 +19,7 @@ const print = (...item) => {
 }
 
 
+import CanvasDraw from "react-canvas-draw";
 
 let controller;
 let stuff = [
@@ -27,6 +27,7 @@ let stuff = [
     new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
 ];
 
+// Mouse X and Y
 
 function App() {
     let currentObj = useRef(null);
