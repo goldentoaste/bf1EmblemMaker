@@ -84,13 +84,12 @@ function App() {
 
     return (
         
-        <body>
+        <html>
                
 
 
 
 
-            <div>
                  
                 <div class="container">
                       
@@ -224,23 +223,46 @@ function App() {
                             ))}
                             </div>
                         </Form>
+
+
+
+
+
+                        
+                        <form>
+                            <Button id='btn'>Generate</Button>
+                            <div class="form-group">
+                                 <textarea class="form-control" id="FormControlTextarea1" rows="3"></textarea>
+                            </div>
+                        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
-                    <div class="List">
-                        <p>List</p>
-                        <Stack gap={3}>
-                            <div className="bg-light border">Selection 1</div>
-                            <div className="bg-light border">Selection 2</div>
-                            <div className="bg-light border">Selection 3</div>
-                        </Stack>
+
+
                     </div> 
                     <div class="Shapes">
                         <ButtonGroup className="sm">
                         {iconButtons}
                         </ButtonGroup>
                     </div>
-                </div>
-            </div>
-        </body>
+              
+                                
+        </html>
     );
 }
 

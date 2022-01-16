@@ -2,13 +2,12 @@
 
 
 .container {
+    display: flex;
     width:inherit;
     height:inherit;
     background-color:rgb(116, 207, 219);
     display: grid; 
-    grid-template-columns: 6fr 2fr 2fr; 
-    grid-template-rows: 7fr 2fr 1fr;  
-    gap: 0px 0px; 
+
     grid-template-areas: 
       "Canvas Canvas Position"
       "Canvas Canvas List"
@@ -16,8 +15,9 @@
 
   }
   .Canvas { 
+    flex-direction: column-reverse;
       grid-area: Canvas; 
-      
+      display: flex;
       text-align: center;
       width: inherit; 
       height: inherit;
@@ -68,6 +68,7 @@
       /* border: 3px solid blue; */ 
       justify-items: center;
       width: 100%;
+      
       text-align: center;
       background-color:rgba(124, 196, 255, 0.993)
       
@@ -173,3 +174,7 @@ p{
 }
 
 
+.btn{
+  margin-left:200px;
+  
+}
