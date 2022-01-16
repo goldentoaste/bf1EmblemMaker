@@ -4,11 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-
+import Stack from 'react-bootstrap/Stack';
 import CanvasController from './canvasController';
-import { CanvasObj } from './canvasObj';
-import Canvas from './canvas';
-
 
 import { CanvasObj,Vector2} from './canvasObj';
 import Canvas from './canvas';
@@ -20,10 +17,9 @@ const print = (...item) => {
 
 
 let controller;
-let stuff = [ // implement change layers
+let stuff = [
     new CanvasObj(50, 50, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "AAAA", false, false, 0, "#aadaff", 1),
     new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
-
 ];
 
 // Mouse X and Y
@@ -31,9 +27,6 @@ let stuff = [ // implement change layers
 function App() {
     let currentObj = useRef(null);
     let objRef = useRef(stuff);
-
-
-
 
 
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
@@ -85,39 +78,99 @@ function App() {
                             />
                         </div>
                     </div>
-                    <div class="Position">
-                        <p>X Val: </p>
-                        
-                        <p>Y Val: Lorem Empsum</p> <br></br>
-                        <p>Height: Lorem Empsum</p>
-                        <p>Width: Lorem Empsum</p> <br></br>
-                        <p>Angle: Lorem Empsum</p>
-                        <p>Opacity: Lorem Empsum</p>
-                    </div>
+                    <div class="InfoGroup">
+                        <div class="posGroup">
+                            <label >X: </label>
+                            <input type={"number"} class="form-control" id="XVal"
+                                value={X}
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.x = parseFloat(e.target.value);
+                                        setX(parseFloat(e.target.value));
+                                    }
+                                }}
+                            />
 
-                                    {/* List */}
-                
+                            <label>Y: </label>
+                            <input type={"number"} class="form-control" id="YVal" value={Y}
+                                onChange={(e) => {
+                                    if (currentObj.current) {
+                                        currentObj.current.y = parseFloat(e.target.value);
+                                        setY(parseFloat(e.target.value));
+                                    }
+                                }
+                                } />
+                        </div>
+
+                        <div class="sizeGroup">
+                            <label >W: </label>
+                            <input type={"number"} class="form-control" id="WVal" value={W}
+                            
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.width = parseFloat(e.target.value);
+                                    setW(parseFloat(e.target.value));
+                                }
+                            }
+                            } />
+
+                            <label >H: </label>
+                            <input type={"number"} class="form-control" id="HVal" value={H}
+                             onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.height = parseFloat(e.target.value);
+                                    setH(parseFloat(e.target.value));
+                                }
+                            }
+                            } />
+                        </div>
+
+                        <div>
+                            <label >Angle: </label>
+                            <input type={"number"} class="form-control" id="AngleVal" value={angle}
+                             onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.angle = parseFloat(Vector2.d2r(e.target.value));
+                                    setAngle( parseFloat(e.target.value));
+                                }
+                            }
+                            }/>
+                        </div>
+
+                        <div>
+                            <label >Opcaity: </label>
+                            <input type={"number"} class="form-control" id="OpacityVal" value={opacity}
+                            
+                            onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.opacity = Math.min(1, Math.max(0, parseFloat(e.target.value)));
+                                    setOpacity( parseFloat(e.target.value))
+                                }
+                            }
+                            }/>
+                        </div>
+
+                        <div>
+                            <label>Color: </label>
+                            <input type={"color"} class="form-control" id="ColorVal" value={color} 
+                             onChange={(e) => {
+                                if (currentObj.current) {
+                                    currentObj.current.color = e.target.value;
+                                    setColor(e.target.value)
+                                }
+                            }
+                            }
+                            />
+                        </div>
+                    </div>
                     <div class="List">
-                            <div id='layer1'>
-                                <p>Layer 1</p>
-                            </div>
-
-                            <div id='layer2'>
-                                <p>Layer 2</p>
-                            </div>
-                                <p>Layer 3</p>
-
-                            <div id='layer3'>
-                                
-                            </div>
+                        <p>List</p>
+                        <Stack gap={3}>
+                            <div className="bg-light border">Selection 1</div>
+                            <div className="bg-light border">Selection 2</div>
+                            <div className="bg-light border">Selection 3</div>
+                        </Stack>
                     </div>
-
-
-
-
-
-
-
                     <div class="Shapes">
                         <p>Shapes</p>
 
@@ -133,4 +186,4 @@ function App() {
     );
 }
 
-export default App; 
+export default App;
