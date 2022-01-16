@@ -7,7 +7,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Stack from 'react-bootstrap/Stack';
 import CanvasController from './canvasController';
 
-import { CanvasObj } from './canvasObj';
+import { CanvasObj,Vector2} from './canvasObj';
 import Canvas from './canvas';
 
 const print = (...item) => {
@@ -51,7 +51,7 @@ function App() {
             setY(obj.y);
             setW(obj.width);
             setH(obj.height);
-            setAngle(obj.angle);
+            setAngle(Vector2.r2d(obj.angle));
             setOpacity(obj.opacity);
             setColor(obj.color);
         }
@@ -128,7 +128,7 @@ function App() {
                             <input type={"number"} class="form-control" id="AngleVal" value={angle}
                              onChange={(e) => {
                                 if (currentObj.current) {
-                                    currentObj.current.angle = parseFloat(e.target.value);
+                                    currentObj.current.angle = parseFloat(Vector2.d2r(e.target.value));
                                     setAngle( parseFloat(e.target.value));
                                 }
                             }

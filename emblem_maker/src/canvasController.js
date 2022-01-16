@@ -53,11 +53,8 @@ class CanvasController {
     onMove(event = new MouseEvent(), context = new CanvasRenderingContext2D()) {
    
         if (this.left && this.currentObj.current) {
-          
             let delta = new Vector2(event.screenX, event.screenY).add(this.lastPos.mul(-1));
-     
             this.currentObj.current.position = this.currentObj.current.position.add(delta);
-
             this.lastPos = new Vector2(event.screenX, event.screenY);   
         }
 
