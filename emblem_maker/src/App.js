@@ -79,9 +79,17 @@ function App() {
     }
 
     return (
+        
         <body>
+               
+
+
+
+
             <div>
+                 
                 <div class="container">
+                      
                     <div class="Canvas">
                         {/* <p><strong>Canvas</strong></p> */}
                         <div class='CV'>
@@ -94,14 +102,14 @@ function App() {
                                 currentObj={currentObj}
                                 props={{
                                     width: 800,
-                                    height: 800
+                                    height: 805
                                 }}
                             />
                         </div>
                     </div>
                     <div class="InfoGroup">
                         <div class="posGroup">
-                            <label >X: </label>
+                             <label ><font> <strong>X: </strong></font></label>
                             <input type={"number"} class="form-control" id="XVal"
                                 value={X}
                                 onChange={(e) => {
@@ -112,7 +120,7 @@ function App() {
                                 }}
                             />
 
-                            <label>Y: </label>
+                                <label ><font> <strong>Y: </strong></font></label>
                             <input type={"number"} class="form-control" id="YVal" value={Y}
                                 onChange={(e) => {
                                     if (currentObj.current) {
@@ -124,8 +132,8 @@ function App() {
                         </div>
 
                         <div class="sizeGroup">
-                            <label >W: </label>
-                            <input type={"number"} class="form-control" id="WVal" value={W}
+                        <label ><font> <strong>W: </strong></font></label>                          
+                          <input type={"number"} class="form-control" id="WVal" value={W}
 
                                 onChange={(e) => {
                                     if (currentObj.current) {
@@ -135,7 +143,7 @@ function App() {
                                 }
                                 } />
 
-                            <label >H: </label>
+                                <label ><font> <strong>H: </strong></font></label>
                             <input type={"number"} class="form-control" id="HVal" value={H}
                                 onChange={(e) => {
                                     if (currentObj.current) {
@@ -146,8 +154,8 @@ function App() {
                                 } />
                         </div>
 
-                        <div>
-                            <label >Angle: </label>
+                        <div className='angle'>
+                        <label ><font> <strong>Angle: </strong></font></label>
                             <input type={"number"} class="form-control" id="AngleVal" value={angle}
                                 onChange={(e) => {
                                     if (currentObj.current) {
@@ -158,8 +166,10 @@ function App() {
                                 } />
                         </div>
 
-                        <div>
-                            <label >Opcaity: </label>
+                        <div className='opacitydiv'>
+                            <label className='text3' > <strong>
+                                    Opacity: 
+                                </strong></label>
                             <input type={"number"} class="form-control" id="OpacityVal" value={opacity}
 
                                 onChange={(e) => {
@@ -171,8 +181,8 @@ function App() {
                                 } />
                         </div>
 
-                        <div>
-                            <label>Color: </label>
+                        <div className='color'>
+                        <label ><font> <strong>Color: </strong></font></label>
                             <input type={"color"} class="form-control" id="ColorVal" value={color}
                                 onChange={(e) => {
                                     if (currentObj.current) {
@@ -185,19 +195,19 @@ function App() {
                         </div>
                         <Form >
                             <div className='text'>
-                            <label>FlipX: </label>
+                            <label><strong>Flip X: </strong></label>
                             </div>
                                 <div className='checkbox'>
                             {['checkbox'].map((type) => (
                                 <div className="mb-3">
-                                    <label>FlipX</label>
+                                    
                                    <Form.Check onChange={(e)=>{ print(e.target.checked)
                                        }}/>
                                 </div>
                             ))}
                             </div>
                                 <div className='text2'>
-                                     <label>FlipY: </label>  
+                                <label ><font> <strong>Flip Y: </strong></font></label> 
 
                                 </div>
                              
