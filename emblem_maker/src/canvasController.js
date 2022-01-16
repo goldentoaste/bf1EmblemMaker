@@ -18,19 +18,27 @@ class CanvasController {
 
 
     onClick(event = new MouseEvent(), context = new CanvasRenderingContext2D()) {
+        
+
         let targetBox = event.target.getBoundingClientRect();
         if (event.button === 0) { //0 is code for mouse left
             this.left = true;
             this.lastPos = new Vector2(event.screenX, event.screenY);
-           
         }
-
         this.currentObj.current = null; //set the initial val to null so that if no obj is under mouse.
         for (let item of this.objs.current) {//finding if there is a currently selected object
-            if (context.isPointInPath(item.path, event.pageX - targetBox.left - item.x, event.pageY - targetBox.top - item.y)) {
-                this.currentObj.current = item;
-                //    this.offset = (new Vector2(event.pageX - targetBox.left, event.pageY-targetBox.top)).add(item.position.mul(-1));
 
+            let transformedPos = new Vector2(event.pageX - targetBox.left, event.pageY - targetBox.top);//convert page coord into canvas coord
+            transformedPos = transformedPos
+            .add(item.size.mul(0.5))
+             .mulP(1/item.ScaleX, 1/item.ScaleY)
+             //.rotate(-item.angle)
+            .add(item.center.mul(-1)); //undoing item transformations.
+            print(transformedPos);
+
+            if (context.isPointInPath(item.path, transformedPos.x, transformedPos.y)) {
+                this.currentObj.current = item;
+                //this.offset = (new Vector2(event.pageX - targetBox.left, event.pageY-targetBox.top)).add(item.position.mul(-1));
             }
         }
      

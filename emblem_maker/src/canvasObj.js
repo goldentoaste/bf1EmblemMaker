@@ -31,16 +31,19 @@ class CanvasObj{
     get height(){return this.currentSize.y;}
     set height(v){this.currentSize.y = v};
 
+    get ScaleX(){return this.currentSize.x / this.size.x * (this.flipX ? -1 : 1)}
+    get ScaleY(){return this.currentSize.y / this.size.y *( this.flipY ? -1 : 1)}
+
+    get center(){return this.position.add(this.size.mul(0.5));}
+
     draw(context){
         //render the svg file on canvas.
 
-        let scaleX = this.currentSize.x / this.size.x * (this.flipX ? -1 : 1);
-        let scaleY = this.currentSize.y / this.size.y *( this.flipY ? -1 : 1);
+        let scaleX = this.ScaleX;
+        let scaleY = this.ScaleY;
         context.fillStyle = this.color;
-        let center = this.position.add(this.size.mul(0.5));
+        let center = this.center;
 
-        
-        
         context.translate(center.x, center.y); //move context to center of shape
         
         context.rotate(this.angle); //rotate by angle
