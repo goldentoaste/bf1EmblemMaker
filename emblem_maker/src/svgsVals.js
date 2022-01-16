@@ -23,4 +23,4 @@ const svgs = {
 
 }
 
-export default {svgs, SvgContainer};
+export {svgs, SvgContainer};

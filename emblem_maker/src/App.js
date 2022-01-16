@@ -13,6 +13,7 @@ import Canvas from './canvas';
 import { CanvasObj } from './canvasObj';
 import CanvasController from './canvasController';
 
+import {svgs} from './svgsVals';
 
 const print = (...item) => {
     console.log(...item)
@@ -22,7 +23,7 @@ const print = (...item) => {
 
 let controller;
 let stuff = [
-    new CanvasObj(50, 50, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "AAAA", false, false, 0, "#aadaff", 1),
+    new CanvasObj(50, 50, 325, 325,svgs['Dogtag'].path, "AAAA", false, false, 0, "#aadaff", 1),
     new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "BBBB", false, false, 0, "#dddddd", 1),
 ];
 
@@ -43,7 +44,6 @@ function App() {
                     <div className="Canvas">
                         {/* <p><strong>Canvas</strong></p> */}
                         <div className='CV'>
-
                             <Canvas objects={objRef}
                                 onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
                                 onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
