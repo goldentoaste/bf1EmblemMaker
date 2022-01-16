@@ -109,6 +109,7 @@ function App() {
                             onChange={(e) => {
                                 if (currentObj.current) {
                                     currentObj.current.width = parseFloat(e.target.value);
+                                    setW(parseFloat(e.target.value));
                                 }
                             }
                             } />
@@ -118,6 +119,7 @@ function App() {
                              onChange={(e) => {
                                 if (currentObj.current) {
                                     currentObj.current.height = parseFloat(e.target.value);
+                                    setH(parseFloat(e.target.value));
                                 }
                             }
                             } />

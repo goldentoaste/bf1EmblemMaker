@@ -5,7 +5,7 @@ const print = (item) => {
     console.log(item)
 }
 
-const updatesPerSec = 30;
+const updatesPerSec = 60;
 const deltaTime = 1000/updatesPerSec;
 
 //need render should be a useState variable, to be used in for example onclick or onrelease.

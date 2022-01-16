@@ -24,12 +24,12 @@ request.open(
             "angle": 0,
             "flipX": false,
             "flipY": false,
-            "top": 325,
+            "top": 10,
             "height": 10,
-            "width": 10,
+            "width": 20,
             "asset": "Square",
             "selectable": false,
-            "left": 325,
+            "left": 10,
             "fill": "#5CA3FF"
         }]`
         },

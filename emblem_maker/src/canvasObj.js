@@ -8,6 +8,7 @@ class CanvasObj{
     constructor(x, y, width, height, path, assetName, flipX, flipY, angle, color, opacity){
         this.position = new Vector2(x, y); //pos is upper left corner.
         this.size = new Vector2(width, height);
+        this.currentSize = new Vector2(width, height);
         this.path = new Path2D(path);
         this.assetName = assetName;
         this.flipX = flipX;
@@ -23,40 +24,48 @@ class CanvasObj{
     get y(){return this.position.y;}
     set y(v){this.position.y = v;}
 
-    get width(){return this.size.x;}
-    set width(v){this.size.x = v;}
+    //warning!! get n setter mapping to this.currenSize could be very confusing.
+    get width(){return this.currentSize.x;}
+    set width(v){this.currentSize.x = v;}
 
-    get height(){return this.size.y;}
-    set height(v){this.size.y = v};
+    get height(){return this.currentSize.y;}
+    set height(v){this.currentSize.y = v};
 
     draw(context){
         //render the svg file on canvas.
 
+        let scaleX = this.currentSize.x / this.size.x * (this.flipX ? -1 : 1);
+        let scaleY = this.currentSize.y / this.size.y *( this.flipY ? -1 : 1);
         context.fillStyle = this.color;
         let center = this.position.add(this.size.mul(0.5));
-        context.translate(center.x, center.y);
-        context.rotate(this.angle);
-        let undoOffset = this.size.mul(-0.5);
-        context.translate(undoOffset.x, undoOffset.y);
 
+        
+        
+        context.translate(center.x, center.y); //move context to center of shape
+        
+        context.rotate(this.angle); //rotate by angle
+        context.scale(scaleX, scaleY); //scale after rotating, idk why.
+        let undoOffset = this.size.mul(-0.5);
+        context.translate(undoOffset.x, undoOffset.y); //the origin of the path is still it's upper left corner, this is to conpensate.
         context.fill(this.path);
 
-        context.translate(...undoOffset.mul(-1).toArray());
-        context.rotate(-this.angle);
-        context.translate(-center.x,-center.y);
+        context.setTransform(1, 0, 0, 1, 0 ,0); //reset the transform
         
-        
-      //  context.setTransform(1, 0, 0, 1, 0, 0 ); //reset the transform to not cause unwanted effects
         
     }
 
     drawBoundBox(context){
         //draw a rotated bounding box for this object.
+
+        let scaleX = this.currentSize.x / (this.size.x * 2);
+        let scaleY = this.currentSize.y / (this.size.y * 2);
+
+    
         let center = this.position.add(this.size.mul(0.5)); //move upper left corner by half of size to get to center.
-        let upperleft = this.position.rotateAround(this.angle, center);
-        let upperRight = this.position.add(new Vector2(this.width, 0)).rotateAround(this.angle, center);
-        let botLeft = this.position.add(new Vector2(0, this.height)).rotateAround(this.angle, center);
-        let botRight = this.position.add(this.size).rotateAround(this.angle, center);
+        let upperleft = this.size.mulP(-scaleX, scaleY).add(center).rotateAround(this.angle, center);
+        let upperRight = this.size.mulP(scaleX, scaleY).add(center).rotateAround(this.angle, center);
+        let botLeft = this.size.mulP(-scaleX, -scaleY).add(center).rotateAround(this.angle, center);
+        let botRight = this.size.mulP(scaleX, -scaleY).add(center).rotateAround(this.angle, center);
 
         context.strokeStyle = "#FF80aa";
         context.lineCap = "round";
@@ -152,6 +161,12 @@ class Vector2 {
         //adds another vector onto this one, and return result
 
         return new Vector2(this.x + vec.x, this.y + vec.y);
+    }
+
+    mulP(x, y){
+        //multiply x and y seperately
+
+        return new Vector2(this.x * x, this.y * y);
     }
 
     mul(float) {
