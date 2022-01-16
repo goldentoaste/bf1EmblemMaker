@@ -1,87 +1,77 @@
 import React from 'react';
 import './App.css';
-
-import Canvas from './canvas';
-import CanvasObj from './canvasObj';
-const print = (...item) => {
-    console.log(...item)
-}
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Stack from 'react-bootstrap/Stack';
 function App() {
-    //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
-    // let stuff = [
-    //     // new CanvasObj(50, 50, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "", false, false, 0, "#aadaff", 1),
-    //     new CanvasObj(200, 100, 325, 325, "M0 0 L325 0 L325 325 L0 325 Z", "", false, false, 0, "#dddddd", 1),
-    // ];
 
-
-
-//     return (
-//         <div className='canvasContainer'>
-//             <h1>Hello</h1>
-//             <Canvas objects={stuff}
-//                 onClick={(event) => print("onClick", event.button)}
-//                 onRelease={(event) => print("onRelease", event.button)}
-//                 onMove={(event) => print("onMove", event.button)}
-//                 onRender={() => { }}
-//                 needRendering={true}
-//                 props={{
-//                     width: 1000,
-//                     height: 1000
-//                 }}
-//             />
-//         </div>
-//     )
-// }
+    return (
         
-        return (
+        
         <body>
-            <div className='main'>
+            <div class="container">
+                <div class="Canvas">
+                    <p><strong>Canvas</strong></p>
                 
-                <div className='canvas'>
-
-                    <p>Placeholder for canvas</p> 
-
                 </div>
-                
-                
-                
-                <div className='position'>
-
-                    <div className='border rounded m-3 p-5 shadow bg-warning'>
-                        <p>X Position and Y Position</p>
+                <div class="Position">
+                    <p>X Val: Lorem Empsum</p> 
+                    <p>Y Val: Lorem Empsum</p> <br></br>
+                    <p>Height: Lorem Empsum</p>
+                    <p>Width: Lorem Empsum</p> <br></br>
+                    <p>Angle: Lorem Empsum</p>
+                    <p>Opacity: Lorem Empsum</p>
+                </div>
+                <div class="List">
+                    
+                    
+                    
+                    <p>List</p>
+                    <Stack gap={3}>
+                        <div className="bg-light border">Selection 1</div>
+                        <div className="bg-light border">Selection 2</div>
+                        <div className="bg-light border">Selection 3</div>
+                    </Stack>
+                    
+                    
                     </div>
-                    <div className='border rounded m-3 p-5 shadow bg-warning'>
-                        <p>Height and Width</p>
-                    </div>
-                    <div className='width'>
+                <div class="Shapes">
+                    
+                    
+                    
+                    <p>Shapes</p>
 
-                    </div>
+                    <ButtonGroup className="sm">
+                        <Button >SVG Shape 1</Button>
+                        <Button >SVG Shape 2</Button>
+                        <Button >SVG Shape 3</Button>
+                    </ButtonGroup>
 
-
-
-
+                    
+                    
                 </div>
 
 
-                <div className='shapes'>
-                    <p>Placeholder for shapes</p>
 
-                </div>
 
-                <div className='list'>
-                    <p>Placeholder for list</p>
 
-                </div>
 
 
 
 
             </div>
-    
+                
+            
+
+
 
             
+
+
+
         </body>
         )
     }
