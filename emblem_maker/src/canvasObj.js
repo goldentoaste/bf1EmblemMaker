@@ -40,12 +40,13 @@ class CanvasObj{
         let botLeft = this.position.add(new Vector2(0, this.height)).rotateAround(this.angle, center);
         let botRight = this.position.add(this.size).rotateAround(this.angle, center);
 
-        context.setStrokeStyle("#aadaff");
+        context.strokeStyle = "#FF80aa";
         context.lineCap = "round";
         context.lineJoin = "round";
 
-        context.moveTo(upperleft.x, upperleft.y);
         context.beginPath();
+        context.moveTo(upperleft.x, upperleft.y);
+        
         context.lineTo(upperRight.x, upperRight.y);
         context.lineTo(botRight.x, botRight.y);
         context.lineTo(botLeft.x, botLeft.y);
@@ -93,7 +94,7 @@ class Vector2 {
 
     rotateAround(angle, pivot){
         //rotate this vector by angle, around pivot point, another vector2
-        return angle.add(pivot.mul(-1)).rotate(angle).add(pivot);
+        return this.add(pivot.mul(-1)).rotate(angle).add(pivot);
     }
 
     rotate(angle) {
@@ -157,4 +158,4 @@ class Vector2 {
 
 
 
-export default CanvasObj;
+export {CanvasObj, Vector2};
