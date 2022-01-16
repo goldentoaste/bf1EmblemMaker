@@ -10,6 +10,8 @@ import { CanvasObj } from './canvasObj';
 import Canvas from './canvas';
 
 
+import { CanvasObj,Vector2} from './canvasObj';
+import Canvas from './canvas';
 
 const print = (...item) => {
     console.log(...item)
@@ -36,22 +38,44 @@ function App() {
 
     //todo test rotation, implement transparency,width, height, flip X&Y and also mouse Drag.
     useEffect(() => {
-        print("setting up in useEffect.");
+
         controller = new CanvasController(objRef, currentObj);
     }, [])
+
+
+    let [X, setX] = useState(0);
+    let [Y, setY] = useState(0);
+    let [W, setW] = useState(0);
+    let [H, setH] = useState(0);
+    let [angle, setAngle] = useState(0);
+    let [opacity, setOpacity] = useState(0);
+    let [color, setColor] = useState("#000000");
+
+    const updateStats = () => {
+        let obj = currentObj.current;
+        if (obj && controller.left) { //only update if there is a current obj selected.
+            setX(obj.x);
+            setY(obj.y);
+            setW(obj.width);
+            setH(obj.height);
+            setAngle(Vector2.r2d(obj.angle));
+            setOpacity(obj.opacity);
+            setColor(obj.color);
+        }
+    }
 
     return (
         <body>
             <div>
-                <div className="container">
-                    <div className="Canvas">
+                <div class="container">
+                    <div class="Canvas">
                         {/* <p><strong>Canvas</strong></p> */}
-                        <div className='CV'>
+                        <div class='CV'>
                             <Canvas objects={objRef}
                                 onClick={(evt, ctx) => { controller.onClick(evt, ctx) }}
                                 onRelease={(evt, ctx) => { controller.onRelease(evt, ctx) }}
                                 onMove={(evt, ctx) => { controller.onMove(evt, ctx) }}
-                                onRender={() => { }}
+                                onRender={() => { updateStats(); }}
                                 needRendering={true}
                                 currentObj={currentObj}
                                 props={{

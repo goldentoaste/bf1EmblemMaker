@@ -18,17 +18,35 @@ class CanvasObj{
     }
 
     get x(){return this.position.x;}
+    set x(v){this.position.x = v};
+
     get y(){return this.position.y;}
+    set y(v){this.position.y = v;}
+
     get width(){return this.size.x;}
+    set width(v){this.size.x = v;}
+
     get height(){return this.size.y;}
+    set height(v){this.size.y = v};
 
     draw(context){
         //render the svg file on canvas.
 
         context.fillStyle = this.color;
-        context.setTransform(1, 0, 0, 1, this.x, this.y );
+        let center = this.position.add(this.size.mul(0.5));
+        context.translate(center.x, center.y);
+        context.rotate(this.angle);
+        let undoOffset = this.size.mul(-0.5);
+        context.translate(undoOffset.x, undoOffset.y);
+
         context.fill(this.path);
-        context.setTransform(1, 0, 0, 1, 0, 0 ); //reset the transform to not cause unwanted effects
+
+        context.translate(...undoOffset.mul(-1).toArray());
+        context.rotate(-this.angle);
+        context.translate(-center.x,-center.y);
+        
+        
+      //  context.setTransform(1, 0, 0, 1, 0, 0 ); //reset the transform to not cause unwanted effects
         
     }
 
@@ -90,6 +108,10 @@ class Vector2 {
 
     static d2r(deg) {
         return (deg / 360) * 2 * Math.PI;
+    }
+
+    toArray(){
+        return [this.x, this.y];
     }
 
     rotateAround(angle, pivot){
