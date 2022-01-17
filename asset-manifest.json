@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/bf1EmblemMaker/static/css/main.8e779879.css",
+    "main.js": "/bf1EmblemMaker/static/js/main.cd440ddb.js",
+    "static/js/787.cbbacbec.chunk.js": "/bf1EmblemMaker/static/js/787.cbbacbec.chunk.js",
+    "static/media/Dogtag.svg": "/bf1EmblemMaker/static/media/Dogtag.ea3a9036eff5ffea24a45db3285c7514.svg",
+    "index.html": "/bf1EmblemMaker/index.html",
+    "static/media/Circle.svg": "/bf1EmblemMaker/static/media/Circle.df0461ce3dd09ac965d40b14a26d26df.svg",
+    "static/media/Shield.svg": "/bf1EmblemMaker/static/media/Shield.544fb6de1b3349d990f5f4f6fa2fd781.svg",
+    "static/media/StrokeBent.svg": "/bf1EmblemMaker/static/media/StrokeBent.d3f2823868daa75640aa7fe0ec13041e.svg",
+    "static/media/Triangle.svg": "/bf1EmblemMaker/static/media/Triangle.c7a454646ed30e9ecfaf41df26085870.svg",
+    "static/media/Stroke.svg": "/bf1EmblemMaker/static/media/Stroke.9b3c9da3fa7832ca8002a98f13c978fb.svg",
+    "main.8e779879.css.map": "/bf1EmblemMaker/static/css/main.8e779879.css.map",
+    "main.cd440ddb.js.map": "/bf1EmblemMaker/static/js/main.cd440ddb.js.map",
+    "787.cbbacbec.chunk.js.map": "/bf1EmblemMaker/static/js/787.cbbacbec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8e779879.css",
+    "static/js/main.cd440ddb.js"
+  ]
+}
